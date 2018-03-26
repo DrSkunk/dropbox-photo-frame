@@ -1,0 +1,36 @@
+.App {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.background-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.blurred {
+  filter: blur(25px);
+}
