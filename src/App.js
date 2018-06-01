@@ -12,9 +12,12 @@ class App extends Component {
   }
 
   accessToken = null;
+  timeout = null;
 
   componentDidMount = () => {
-    const accessToken = new URL(window.location).searchParams.get("accessToken");
+    const searchParams = new URL(window.location).searchParams;
+    const accessToken = searchParams.get("accessToken");
+    this.timeout = searchParams.get("timeout");
     this.accessToken = { accessToken };
     this.setState({ loaded: true });
   };
@@ -32,8 +35,6 @@ class App extends Component {
   process = (result) => {
     const entry = result.entries[Math.floor(Math.random() * result.entries.length)];
 
-    console.log(entry)
-
     new Dropbox(this.accessToken).filesGetTemporaryLink({ path: entry.path_lower })
       .then(image => {
         this.setState({ imageUrl: image.link })
@@ -44,8 +45,9 @@ class App extends Component {
     const { imageUrl, loaded } = this.state
     return (
       <div className="App" >
+      Twerkt ze
         {imageUrl && <Image uri={imageUrl} />}
-        {loaded && <Timer tick={this.getNewPicture} />}
+        {loaded && <Timer timeOut={this.timeout} tick={this.getNewPicture} />}
       </div>
     );
   }

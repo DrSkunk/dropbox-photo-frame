@@ -39,12 +39,12 @@ export default class Image extends Component {
     const { currentUri, nextUri } = this.state;
     return (
       <div className="container" >
-        <img src={currentUri} alt="Current image" />
+        <img src={currentUri} alt="Current" />
         <img
           src={nextUri}
           onLoad={this.handleImageLoaded.bind(this)}
           style={{ display: "none" }}
-          alt="Loading next image"
+          alt="Loading next"
         />
         <div className="background-image" src={currentUri} style={{ backgroundImage: `url('${currentUri}')` }} />
       </div>
