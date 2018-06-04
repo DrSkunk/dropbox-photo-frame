@@ -1,53 +1,53 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ExifOrientationImg from "react-exif-orientation-img";
 
 export default class Image extends Component {
-
   static propTypes = {
-    uri: PropTypes.string.isRequired,
+    uri: PropTypes.string.isRequired
   };
 
   state = {
-    currentUri: null,
-    nextUri: null
+    uris: []
   };
 
-  handleImageLoaded() {
-    this.setState({
-      currentUri: this.state.nextUri,
-      nextUri: null
-    });
-  }
+  componentDidMount = () => {
+    this.setState({});
+  };
 
-  componentDidMount() {
-    this.setState({
-      nextUri: this.props.uri,
-    });
-  }
-
-  handleImageErrored() {
-    console.error("Error loading image");
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      nextUri: nextProps.uri,
-    });
+  static getDerivedStateFromProps(props, state) {
+    const { uri } = props;
+    if (state.uris[0] === uri) {
+      return null;
+    }
+    let uris = state.uris;
+    uris.push(uri);
+    if (uris.length === 3) {
+      uris.shift();
+    } else if (uris.length === 1) {
+      uris.push(uri);
+    }
+    return { uris };
   }
 
   render() {
-    const { currentUri, nextUri } = this.state;
+    const { uris } = this.state;
+    const currentUri = uris[0];
+    const nextUri = uris[1];
     return (
-      <div className="container" >
-        <img src={currentUri} alt="Current" />
-        <img
+      <div className="container">
+        <ExifOrientationImg src={currentUri} alt="Current" />
+        <ExifOrientationImg
           src={nextUri}
-          onLoad={this.handleImageLoaded.bind(this)}
           style={{ display: "none" }}
           alt="Loading next"
         />
-        <div className="background-image" src={currentUri} style={{ backgroundImage: `url('${currentUri}')` }} />
+        <div
+          className="background-image"
+          src={currentUri}
+          style={{ backgroundImage: `url('${currentUri}')` }}
+        />
       </div>
-    )
+    );
   }
-};
+}
