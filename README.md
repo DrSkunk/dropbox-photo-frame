@@ -13,11 +13,18 @@ There are two methods of using this, the hosted solution and running locally. Th
 
 First, find your DropBox access token. You can the instructions to generate one [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/). 
 
-Then, go to the following website and substitute `YOURTOKEN` with your own access token.
+Then, go to the following website and substitute `YOURTOKEN` with your own access token. 
 
 ```
 https://sebastiaanjansen.be/dropbox-photo-frame?accessToken=YOURTOKEN
 ```
+
+You can optionally set the timeout in milliseconds as well. 10000 being 10 seconds.
+
+```
+https://sebastiaanjansen.be/dropbox-photo-frame?accessToken=YOURTOKEN&timeout=10000
+```
+
 
 This is a purely client site webapp that's hosted at the GitHub servers. Since it's server over https, your access token is not visible. However there is always the local setup below.
 

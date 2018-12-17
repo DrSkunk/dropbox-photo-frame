@@ -8,7 +8,9 @@ export default class Timer extends React.Component {
   };
 
   componentWillMount() {
-    this.timeout = config.timeout;
+
+    this.timeout =  new URL(window.location).searchParams.get("timeout") || config.timeout;
+    console.log("timeout",this.timeout)
   }
 
   componentDidMount() {
