@@ -1,8 +1,7 @@
 var config = {};
 
 config.accessToken = {
-  accessToken:
-    ""
+  accessToken: null
 };
 config.timeout = 10000;
 config.path = "/fotos";

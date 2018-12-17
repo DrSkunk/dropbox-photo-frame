@@ -36,7 +36,7 @@ export default class Image extends Component {
     const nextUri = uris[1];
     return (
       <div className="container">
-        <ExifOrientationImg src={currentUri} alt="Current" />
+        <ExifOrientationImg src={currentUri} alt="Loading first image..." />
         <ExifOrientationImg
           src={nextUri}
           style={{ display: "none" }}
