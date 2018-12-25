@@ -74,7 +74,7 @@ class App extends Component {
 
   parseMoment = moment => {
     let split = moment.split("-");
-    let result = parseInt(split[0]) * 60 + parseInt(split[1]);
+    let result = parseInt(split[0], 10) * 60 + parseInt(split[1], 10);
     return result;
   };
 
@@ -103,7 +103,6 @@ class App extends Component {
 
   render() {
     const { imageUrl, blackout } = this.state;
-    const visible = true;
     if (this.error) {
       return <div>{this.error}</div>;
     } else if (blackout) {
