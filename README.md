@@ -25,6 +25,11 @@ You can optionally set the timeout in milliseconds as well. 10000 being 10 secon
 https://sebastiaanjansen.be/dropbox-photo-frame?accessToken=YOURTOKEN&timeout=10000
 ```
 
+There is alos the option set a blackout period. It will just show a black website then, it will not really save any power.
+
+```
+https://sebastiaanjansen.be/dropbox-photo-frame?accessToken=YOURTOKEN&startMoment=09-30&stopMoment=20-30
+```
 
 This is a purely client site webapp that's hosted at the GitHub servers. Since it's server over https, your access token is not visible. However there is always the local setup below.
 
