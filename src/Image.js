@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import ExifOrientationImg from "react-exif-orientation-img";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ExifOrientationImg from 'react-exif-orientation-img';
 
 export default class Image extends Component {
   static propTypes = {
@@ -39,7 +39,7 @@ export default class Image extends Component {
         <ExifOrientationImg src={currentUri} alt="Loading first image..." />
         <ExifOrientationImg
           src={nextUri}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
           alt="Loading next"
         />
         <div
