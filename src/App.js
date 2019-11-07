@@ -59,7 +59,9 @@ class App extends Component {
     this.getTickerText();
     setInterval(this.getTickerText, 60000);
 
-    // setInterval(window.location.reload(), 3600000); // Refresh page every hour
+    setTimeout(() => {
+      window.location.reload();
+    }, 3600000); // Refresh page every hour
   }
 
   state = {

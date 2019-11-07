@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import ClockDisplay from 'react-clock';
-
-function addLeadingZero(time) {
-  if (time < 9) {
-    return 0 + '' + time;
-  }
-  return time;
-}
+import moment from 'moment-timezone';
 
 export default class Clock extends Component {
   state = {
-    date: new Date()
+    date: moment().tz('Europe/Brussels')
   };
 
   componentDidMount() {
-    setInterval(() => this.setState({ date: new Date() }), 1000);
+    setInterval(
+      () => this.setState({ date: moment().tz('Europe/Brussels') }),
+      1000
+    );
   }
   render() {
     const { date } = this.state;
@@ -31,10 +28,8 @@ export default class Clock extends Component {
           backgroundColor: 'rgba(255,255,255,0.5)'
         }}
       >
-        <ClockDisplay size={100} value={date} />
-        <span style={{ fontSize: '2em' }}>
-          {addLeadingZero(date.getHours())}:{addLeadingZero(date.getMinutes())}
-        </span>
+        <ClockDisplay size={100} value={date.toDate()} />
+        <span style={{ fontSize: '2em' }}>{date.format('HH:mm')}</span>
       </div>
     );
   }
