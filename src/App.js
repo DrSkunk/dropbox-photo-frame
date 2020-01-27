@@ -96,7 +96,7 @@ class App extends Component {
 
   getNewPicture = () => {
     console.log("getnewpicture");
-    fetch(config.url)
+    fetch(config.url + "fotosList")
       .then(res => res.json())
       .then(this.process, console.error);
     // this.dropbox
